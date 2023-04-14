@@ -21,7 +21,7 @@ const airfieldSchema = new Schema({
     icao_code: {
         type: String
     }
-});
+});  //{VersionKey: false} 
 
 const Airfield = mongoose.model('airfield', airfieldSchema);
 const AirfieldDemo = mongoose.model('demo-airfield', airfieldSchema);
