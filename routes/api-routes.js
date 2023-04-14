@@ -1,12 +1,8 @@
 import express from "express";
+import { airfieldController } from "../controllers/airfields-controller.js";
 
 const router = new express.Router();
 
-router.get('/airfields', (req, res) => {
-    res.header('Content-Type', 'application/json');
-    res.send({
-        title: "airfields for gliders"
-    })
-});
+router.get('/airfields', airfieldController.getAllAirfields);
 
 export { router };
