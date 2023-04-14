@@ -6,7 +6,17 @@ class AirfieldController {
         res.json(airfields);
     };
 
+    async addAirfield(req, res) {
+        res.json('add airfield');
+    };
 
+    async editAirfield(req, res) {
+
+    };
+
+    async deleteAirfield(req, res) {
+
+    };
 }
 
 export const airfieldController = new AirfieldController();
