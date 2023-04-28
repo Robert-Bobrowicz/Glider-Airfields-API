@@ -11,11 +11,11 @@ class AirfieldController {
     };
 
     async editAirfield(req, res) {
-
+        res.json('edit and save changes for the airfield');
     };
 
     async deleteAirfield(req, res) {
-
+        res, json('airfield deleted');
     };
 }
 
