@@ -7,7 +7,6 @@ class AirfieldController {
     };
 
     async addAirfield(req, res) {
-        // console.log(req.body);
         const airfield = new AirfieldDemo({
             name: req.body.name,
             city: req.body.city,
@@ -25,7 +24,6 @@ class AirfieldController {
                 errors: e.errors
             })
         };
-
     };
 
     async editAirfield(req, res) {
