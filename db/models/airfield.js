@@ -15,7 +15,7 @@ const airfieldSchema = new Schema({
     longitude: {
         type: String
     },
-    aeroclub: {
+    aeroklub: {
         type: String
     },
     icao_code: {

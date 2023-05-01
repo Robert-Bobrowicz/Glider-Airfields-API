@@ -3,7 +3,10 @@ import { router } from "../routes/api-routes.js"
 
 const app = express();
 
-app.use('/api', router);
+//body parser
+app.use(express.json());
 
+//routes
+app.use('/api', router);
 
 export { app };

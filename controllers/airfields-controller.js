@@ -7,7 +7,17 @@ class AirfieldController {
     };
 
     async addAirfield(req, res) {
-        res.json('add airfield');
+        // console.log(req.body);
+        const airfield = new AirfieldDemo({
+            name: req.body.name,
+            city: req.body.city,
+            latitude: req.body.latitude,
+            longitude: req.body.longitude,
+            aeroklub: req.body.aeroklub,
+            icao_code: req.body.icao_code
+        });
+
+        res.status(201).json(airfield);
     };
 
     async editAirfield(req, res) {
@@ -15,7 +25,7 @@ class AirfieldController {
     };
 
     async deleteAirfield(req, res) {
-        res, json('airfield deleted');
+        res.json('airfield deleted');
     };
 }
 
