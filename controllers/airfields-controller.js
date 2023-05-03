@@ -30,21 +30,26 @@ class AirfieldController {
         const { name } = req.params;
         const airfield = await AirfieldDemo.findOne({ name });
 
-        if (req.body.name) airfield.name = req.body.name;
-        if (req.body.city) airfield.city = req.body.city;
-        if (req.body.latitude) airfield.latitude = req.body.latitude;
-        if (req.body.longitude) airfield.longitude = req.body.longitude;
-        if (req.body.aeroklub) airfield.aeroklub = req.body.aeroklub;
-        if (req.body.icao_code) airfield.icao_code = req.body.icao_code;
+        if (airfield) {
+            if (req.body.name) airfield.name = req.body.name;
+            if (req.body.city) airfield.city = req.body.city;
+            if (req.body.latitude) airfield.latitude = req.body.latitude;
+            if (req.body.longitude) airfield.longitude = req.body.longitude;
+            if (req.body.aeroklub) airfield.aeroklub = req.body.aeroklub;
+            if (req.body.icao_code) airfield.icao_code = req.body.icao_code;
 
-        try {
-            await airfield.save();
-            res.status(200).json(airfield);
-        } catch (e) {
-            res.status(422).json({
-                errors: e.errors
-            })
-        };
+            try {
+                await airfield.save();
+                res.status(200).json(airfield);
+            } catch (e) {
+                res.status(422).json({
+                    errors: e.errors
+                })
+            };
+        } else {
+            console.log('Airfield not found in database.');
+            res.status(422).json('Airfield not found in database.');
+        }
     };
 
     async deleteAirfield(req, res) {
