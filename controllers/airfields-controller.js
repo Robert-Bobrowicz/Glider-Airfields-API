@@ -29,9 +29,15 @@ class AirfieldController {
     async editAirfield(req, res) {
         const { name } = req.params;
         const airfield = await AirfieldDemo.findOne({ name });
-        console.log(airfield);
 
-        res.json('edit and save changes for the airfield');
+        if (req.body.name) airfield.name = req.body.name;
+        if (req.body.city) airfield.city = req.body.city;
+        if (req.body.latitude) airfield.latitude = req.body.latitude;
+        if (req.body.longitude) airfield.longitude = req.body.longitude;
+        if (req.body.aeroklub) airfield.aeroklub = req.body.aeroklub;
+        if (req.body.icao_code) airfield.icao_code = req.body.icao_code;
+
+        res.status(200).json(airfield);
     };
 
     async deleteAirfield(req, res) {
