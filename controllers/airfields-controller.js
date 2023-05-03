@@ -37,7 +37,14 @@ class AirfieldController {
         if (req.body.aeroklub) airfield.aeroklub = req.body.aeroklub;
         if (req.body.icao_code) airfield.icao_code = req.body.icao_code;
 
-        res.status(200).json(airfield);
+        try {
+            await airfield.save();
+            res.status(200).json(airfield);
+        } catch (e) {
+            res.status(422).json({
+                errors: e.errors
+            })
+        };
     };
 
     async deleteAirfield(req, res) {
