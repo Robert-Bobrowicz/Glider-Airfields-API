@@ -27,6 +27,10 @@ class AirfieldController {
     };
 
     async editAirfield(req, res) {
+        const { name } = req.params;
+        const airfield = await AirfieldDemo.findOne({ name });
+        console.log(airfield);
+
         res.json('edit and save changes for the airfield');
     };
 
