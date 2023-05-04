@@ -60,8 +60,9 @@ class AirfieldController {
             await AirfieldDemo.deleteOne({ name });
             res.json(`Airfield: ${airfield.name} was deleted.`);
         } else {
+            console.log('Airfield not found in database.');
             res.status(422).json({
-                message: "Airfield not found in database and can not be deleted."
+                message: "Airfield can not be deleted."
             });
         }
     };
