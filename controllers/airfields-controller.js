@@ -53,7 +53,17 @@ class AirfieldController {
     };
 
     async deleteAirfield(req, res) {
-        res.json('airfield deleted');
+        const { name } = req.params;
+        const airfield = await AirfieldDemo.findOne({ name });
+
+        if (airfield) {
+            await AirfieldDemo.deleteOne({ name });
+            res.json(`Airfield: ${airfield.name} was deleted.`);
+        } else {
+            res.status(422).json({
+                message: "Airfield not found in database and can not be deleted."
+            });
+        }
     };
 }
 
